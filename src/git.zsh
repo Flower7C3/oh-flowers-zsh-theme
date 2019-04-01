@@ -64,7 +64,7 @@ function update_current_git_vars() {
 git_super_status() {
 	precmd_update_git_vars
 	if [[ -n "$GIT_BRANCH" && "$GIT_BRANCH" != ':' ]]; then
-		local STATUS=" "
+		local STATUS=""
 		if [[ "$GIT_BRANCH" == :* ]]; then
 			STATUS="${STATUS}${ZSH_THEME_GIT_PROMPT_COMMIT}${GIT_BRANCH/:/}%{${reset_color}%}"
 		else
@@ -80,7 +80,7 @@ git_super_status() {
 			AHEAD="${ZSH_THEME_GIT_PROMPT_AHEAD}${GIT_AHEAD}%{${reset_color}%}"
 		fi
 		if [[ -n "$BEHIND" || -n "$AHEAD" ]]; then
-			STATUS="${STATUS}${ZSH_THEME_GIT_PROMPT_PREFIX}${BEHIND}${AHEAD}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+			STATUS="${STATUS}${ZSH_THEME_GIT_UPSTREAM_PREFIX}${BEHIND}${AHEAD}${ZSH_THEME_GIT_UPSTREAM_SUFFIX}"
 		fi
 
 		STATUS_CHANGES=""
@@ -88,45 +88,49 @@ git_super_status() {
 			STATUS_CHANGES="${ZSH_THEME_GIT_PROMPT_CLEAN}%{${reset_color}%}"
 		else
 			if [ "$GIT_STAGED" -ne "0" ]; then
-				# if [[ -n "$STATUS_CHANGES" ]]; then
-					# STATUS_CHANGES="${STATUS_CHANGES}"
-				# fi
+				if [[ -n "$STATUS_CHANGES" ]]; then
+					STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SEPARATOR}"
+				fi
 				STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_PROMPT_STAGED}${GIT_STAGED}%{${reset_color}%}"
 			fi
 			if [ "$GIT_CONFLICTS" -ne "0" ]; then
-				# if [[ -n "$STATUS_CHANGES" ]]; then
-					# STATUS_CHANGES="${STATUS_CHANGES}"
-				# fi
+				if [[ -n "$STATUS_CHANGES" ]]; then
+					STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SEPARATOR}"
+				fi
 				STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_PROMPT_CONFLICTS}${GIT_CONFLICTS}%{${reset_color}%}"
 			fi
 			if [ "$GIT_CHANGED" -ne "0" ]; then
-				# if [[ -n "$STATUS_CHANGES" ]]; then
-					# STATUS_CHANGES="${STATUS_CHANGES}"
-				# fi
+				if [[ -n "$STATUS_CHANGES" ]]; then
+					STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SEPARATOR}"
+				fi
 				STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_PROMPT_CHANGED}${GIT_CHANGED}%{${reset_color}%}"
 			fi
 			if [ "$GIT_UNTRACKED" -ne "0" ]; then
-				# if [[ -n "$STATUS_CHANGES" ]]; then
-					# STATUS_CHANGES="${STATUS_CHANGES}"
-				# fi
+				if [[ -n "$STATUS_CHANGES" ]]; then
+					STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SEPARATOR}"
+				fi
 				STATUS_CHANGES="${STATUS_CHANGES}${ZSH_THEME_GIT_PROMPT_UNTRACKED}${GIT_UNTRACKED}%{${reset_color}%}"
 			fi
 		fi
-		STATUS="${STATUS}${ZSH_THEME_GIT_PROMPT_PREFIX}${STATUS_CHANGES}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
-		echo "${STATUS}"
+		STATUS="${STATUS}${ZSH_THEME_GIT_CHANGES_PREFIX}${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SUFFIX}"
+		echo "${ZSH_THEME_GIT_PROMPT_PREFIX}${STATUS}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 	fi
 }
 
 # Default values for the appearance of the prompt. Configure at will.
-ZSH_THEME_GIT_PROMPT_PREFIX="%{${fg[cyan]}(%{${reset_color}%}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{${fg[cyan]})%{${reset_color}%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" "
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_UPSTREAM_PREFIX="%{${fg[cyan]}(%{${reset_color}%}"
+ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{${fg[cyan]})%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_PREFIX="%{${fg[cyan]}[%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SEPARATOR="%{${fg[cyan]}/%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SUFFIX="%{${fg[cyan]}]%{${reset_color}%}"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{${fg_bold[cyan]}$(print_icon 'VCS_BRANCH_ICON')%}"
 ZSH_THEME_GIT_PROMPT_COMMIT="%{${fg_bold[cyan]}$(print_icon 'VCS_COMMIT_ICON')%}"
-ZSH_THEME_GIT_PROMPT_STAGED="%{${fg[green]}\u25cf%G%}" # ●
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{${fg[magenta]}✖%G%}"
-ZSH_THEME_GIT_PROMPT_CHANGED="%{${fg[red]}\u002B%G%}" # +
 ZSH_THEME_GIT_PROMPT_BEHIND="%{${fg[blue]}\u2193%G%}" # ↓
 ZSH_THEME_GIT_PROMPT_AHEAD="%{${fg[blue]}\u2191%G%}" # ↑
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\u2048%G%}" # ⁈
+ZSH_THEME_GIT_PROMPT_STAGED="%{${fg[green]}\u25cf%G%}" # ●
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{${fg[magenta]}\uFE0F%G%}" # ✖
+ZSH_THEME_GIT_PROMPT_CHANGED="%{${fg[red]}\u002B%G%}" # +
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\u2026%G%}" # …
 ZSH_THEME_GIT_PROMPT_CLEAN="%{${fg_bold[green]}\u2714%G%}" # ✔
-
