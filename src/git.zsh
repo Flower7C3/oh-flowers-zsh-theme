@@ -111,17 +111,17 @@ theme_prompt_git() {
 }
 
 # Default values for the appearance of the prompt. Configure at will.
-ZSH_THEME_GIT_UPSTREAM_PREFIX="%{${fg[cyan]}[${reset_color}%}"
-ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{${fg[cyan]}]${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_PREFIX="%{${fg[cyan]}(%G${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_SEPARATOR="%{${fg[cyan]}|%G${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_SUFFIX="%{${fg[cyan]})%G${reset_color}%}"
-ZSH_THEME_GIT_PROMPT_BRANCH="%{${fg_bold[cyan]}$(print_icon 'VCS_BRANCH_ICON')%}"
-ZSH_THEME_GIT_PROMPT_COMMIT="%{${fg_bold[cyan]}$(print_icon 'VCS_COMMIT_ICON')%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="%{${fg[blue]}\u2B07%G%}" # ⬇
-ZSH_THEME_GIT_PROMPT_AHEAD="%{${fg[blue]}\u2B06%G%}" # ⬆
-ZSH_THEME_GIT_PROMPT_STAGED="%{${fg[green]}\u25CF%G%}" # ●
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{${fg[magenta]}\u2716%G%}" # ✖
-ZSH_THEME_GIT_PROMPT_CHANGED="%{${fg[red]}\u271A%G%}" # ✚
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\u2026%G%}" # …
-ZSH_THEME_GIT_PROMPT_CLEAN="%{${fg_bold[green]}\u2714%G%}" # ✔
+ZSH_THEME_GIT_UPSTREAM_PREFIX="%{$fg[cyan]%}[%{${reset_color}%}"
+ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{$fg[cyan]%}]%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_PREFIX="%{$fg[cyan]%}(%G%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SEPARATOR="%{$fg[cyan]%}|%G%{${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SUFFIX="%{$fg[cyan]%})%G%{${reset_color}%}"
+ZSH_THEME_GIT_PROMPT_BRANCH="%{$fg_bold[cyan]%}$(print_icon 'VCS_BRANCH_ICON')"
+ZSH_THEME_GIT_PROMPT_COMMIT="%{$fg_bold[cyan]%}$(print_icon 'VCS_COMMIT_ICON')"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{$fg[blue]%}\u2B07%G" # ⬇
+ZSH_THEME_GIT_PROMPT_AHEAD="%{$fg[blue]%}\u2B06%G" # ⬆
+ZSH_THEME_GIT_PROMPT_STAGED="%{$fg[green]%}\u25CF%G" # ●
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{$fg[magenta]%}\u2716%G" # ✖
+ZSH_THEME_GIT_PROMPT_CHANGED="%{$fg[red]%}\u271A%G" # ✚
+ZSH_THEME_GIT_PROMPT_UNTRACKED="\u2026%G" # …
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg_bold[green]%}\u2714%G" # ✔

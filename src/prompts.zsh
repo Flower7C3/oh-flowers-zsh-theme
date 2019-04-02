@@ -1,10 +1,10 @@
 
 local _newline=$'\n'
-local _space=$' '
+local _space=$'\ '
 local _null=$''
 local _tab=$'\t'
-local _lineup=$'\e[1A'
-local _linedown=$'\e[1B'
+local _lineup='%{'$'\e[1A''%}'
+local _linedown='%{'$'\e[1B''%}'
 
 source ${flower7c3_directory}/git.zsh
 function theme_prompt_clock {
@@ -34,17 +34,18 @@ function theme_prompt_path {
 function theme_prompt_welcome_sign {
   echo -n "%{$terminfo[bold]%}"
   echo -n "$1"
-  echo -n "%(#,%{${fg[red]}%}#,%{${fg[cyan]}%}$)"
+  echo -n "%{%(#,$fg[red],$fg[cyan])%}"
+  echo -n "%(#,#,$)"
   echo -n "$2"
   echo -n "%{$reset_color%}"
 }
 function theme_prompt_exit_code {
-  echo -n "%(?,,%{$fg[red]%})"
+  echo -n "%{%(?,,$fg[red])%}"
   echo -n "%(?,,$1)"
   echo -n "%(?,,\u2716)"
   echo -n "%(?,,%?)"
   echo -n "%(?,,$2)"
-  echo -n "%(?,,%{$reset_color%})"
+  echo -n "%{%(?,,$reset_color)%}"
 }
 
 function theme_prompt_special {
@@ -52,38 +53,33 @@ function theme_prompt_special {
   local command_name=${command_params[1]}
   local command_prefix=\${${command_params[2]:-'_null'}}
   local command_suffix=\${${command_params[3]:-'_null'}}
-  theme_prompt_value "$command_name" "$command_prefix" "$command_suffix"
-}
-
-function theme_prompt_value {
-  # echo $1
-  if [[ "$1" == "none" ]]; then
+  if [[ "$command_name" == "none" ]]; then
     # none
-  elif [[ "$1" == "newline" ]]; then
+  elif [[ "$command_name" == "newline" ]]; then
     echo -n '$_newline'
-  elif [[ "$1" == "tab" ]]; then
+  elif [[ "$command_name" == "tab" ]]; then
     echo -n '$_tab'
-  elif [[ "$1" == "space" ]]; then
+  elif [[ "$command_name" == "space" ]]; then
     echo -n '$_space'
-  elif [[ "$1" == "lineup" ]]; then
+  elif [[ "$command_name" == "lineup" ]]; then
     echo -n '$_lineup'
-  elif [[ "$1" == "linedown" ]]; then
+  elif [[ "$command_name" == "linedown" ]]; then
     echo -n '$_linedown'
-  elif [[ "$1" == "clock" ]]; then
-    echo -n '$(theme_prompt_clock '$2' '$3')'
-  elif [[ "$1" == "context" ]]; then
-    echo -n '$(theme_prompt_context '$2' '$3')'
-  elif [[ "$1" == "path" ]]; then
-    echo -n '$(theme_prompt_path '$2' '$3')'
-  elif [[ "$1" == "welcome_sign" ]]; then
-    echo -n '$(theme_prompt_welcome_sign '$2' '$3')'
-  elif [[ "$1" == "git" ]]; then
-    echo -n '$(theme_prompt_git '$2' '$3')'
-  elif [[ "$1" == "exit_code" ]]; then
-    echo -n '$(theme_prompt_exit_code '$2' '$3')'
+  elif [[ "$command_name" == "clock" ]]; then
+    echo -n '$(theme_prompt_clock '$command_prefix' '$command_suffix')'
+  elif [[ "$command_name" == "context" ]]; then
+    echo -n '$(theme_prompt_context '$command_prefix' '$command_suffix')'
+  elif [[ "$command_name" == "path" ]]; then
+    echo -n '$(theme_prompt_path '$command_prefix' '$command_suffix')'
+  elif [[ "$command_name" == "welcome_sign" ]]; then
+    echo -n '$(theme_prompt_welcome_sign '$command_prefix' '$command_suffix')'
+  elif [[ "$command_name" == "git" ]]; then
+    echo -n '$(theme_prompt_git '$command_prefix' '$command_suffix')'
+  elif [[ "$command_name" == "exit_code" ]]; then
+    echo -n '$(theme_prompt_exit_code '$command_prefix' '$command_suffix')'
   else
-    echo -n '[undefined:'$1']'
-    # local command_name=theme_prompt_$1
-    # echo -n $($command_name)
+    echo -n $command_prefix
+    echo -n $command_name
+    echo -n $command_suffix
   fi
 }

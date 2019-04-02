@@ -38,16 +38,18 @@ if [ -z "$ZSH_THEME_PROMPT_LEFT" ]; then
       welcome_sign._newline._space
   )
 fi
-if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
-  ZSH_THEME_PROMPT_RIGHT=(
-    clock
-  )
-fi
-
 PROMPT=""
 for command in "${ZSH_THEME_PROMPT_LEFT[@]}"; do
   PROMPT="${PROMPT}$(theme_prompt_special ${command})"
 done
+
+if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
+  ZSH_THEME_PROMPT_RIGHT=(
+    lineup
+    clock
+    linedown
+  )
+fi
 RPROMPT=""
 for command in "${ZSH_THEME_PROMPT_RIGHT[@]}"; do
   RPROMPT="${RPROMPT}$(theme_prompt_special ${command})"
