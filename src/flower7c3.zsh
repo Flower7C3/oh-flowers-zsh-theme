@@ -26,31 +26,15 @@ else
   fi
 fi
 
+source ${flower7c3_directory}/default.zsh
 source ${flower7c3_directory}/icons.zsh
 source ${flower7c3_directory}/utilities.zsh
 source ${flower7c3_directory}/prompts.zsh
 
-if [ -z "$ZSH_THEME_PROMPT_LEFT" ]; then
-  ZSH_THEME_PROMPT_LEFT=(
-      exit_code
-      path._newline
-      git._space
-      welcome_sign._newline._space
-  )
-fi
 PROMPT=""
 for command in "${ZSH_THEME_PROMPT_LEFT[@]}"; do
   PROMPT="${PROMPT}$(theme_prompt_special ${command})"
 done
-
-if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
-  ZSH_THEME_PROMPT_RIGHT=(
-    lineup
-    context
-    clock._space
-    linedown
-  )
-fi
 RPROMPT=""
 for command in "${ZSH_THEME_PROMPT_RIGHT[@]}"; do
   RPROMPT="${RPROMPT}$(theme_prompt_special ${command})"
