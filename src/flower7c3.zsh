@@ -31,14 +31,11 @@ source ${flower7c3_directory}/prompts.zsh
 
 if [ -z "$ZSH_THEME_PROMPT_LEFT" ]; then
   ZSH_THEME_PROMPT_LEFT=(
-      newline
-      context
-      space
-      path
-      git
       exit_code
-      newline
-      welcome_sign
+      context._newline
+      path._space
+      git._space
+      welcome_sign._newline._space
   )
 fi
 if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
@@ -49,17 +46,9 @@ fi
 
 PROMPT=""
 for command in "${ZSH_THEME_PROMPT_LEFT[@]}"; do
-  # if [[ "$command" == "newline" || "$command" == "space" || "$command" == "lineup" || "$command" == "linedown" || "$command" == "git" ]]; then
-    PROMPT="${PROMPT}$(theme_prompt_special ${command})"
-  # else
-    # PROMPT="${PROMPT}$(theme_prompt_${command})"
-  # fi
+  PROMPT="${PROMPT}$(theme_prompt_special ${command})"
 done
 RPROMPT=""
 for command in "${ZSH_THEME_PROMPT_RIGHT[@]}"; do
-  # if [[ "$command" == "newline" || "$command" == "space" || "$command" == "lineup" || "$command" == "linedown" || "$command" == "git" ]]; then
-    RPROMPT="${RPROMPT}$(theme_prompt_special ${command})"
-  # else
-    # RPROMPT="${RPROMPT}$(theme_prompt_${command})"
-  # fi
+  RPROMPT="${RPROMPT}$(theme_prompt_special ${command})"
 done

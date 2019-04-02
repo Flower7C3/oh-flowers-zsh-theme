@@ -106,13 +106,11 @@ theme_prompt_git() {
 			fi
 		fi
 		STATUS="${STATUS}${ZSH_THEME_GIT_CHANGES_PREFIX}${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SUFFIX}"
-		echo -n "${ZSH_THEME_GIT_PROMPT_PREFIX}${STATUS}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+		echo -n "${1}${STATUS}${2}"
 	fi
 }
 
 # Default values for the appearance of the prompt. Configure at will.
-ZSH_THEME_GIT_PROMPT_PREFIX=" "
-ZSH_THEME_GIT_PROMPT_SUFFIX=""
 ZSH_THEME_GIT_UPSTREAM_PREFIX="%{${fg[cyan]}[${reset_color}%}"
 ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{${fg[cyan]}]${reset_color}%}"
 ZSH_THEME_GIT_CHANGES_PREFIX="%{${fg[cyan]}(%G${reset_color}%}"

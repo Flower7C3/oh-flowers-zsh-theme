@@ -29,18 +29,21 @@ You can use with following sections in prompt line:
 * newline
 * space
 
+Each section may have prefix and suffix (by default it is null). To add prefix and suffix just add them after dot in section name:
+* _newline
+* _space
+* _null
+* _tab
+
 Just add in your `~/.zshrc` variable `ZSH_THEME_PROMPT_LEFT` or `ZSH_THEME_PROMPT_RIGHT`, eg:
 
     ZSH_THEME_PROMPT_LEFT=(
-        newline
-        context
-        space
-        path
-        git
         exit_code
-        newline
-        welcome_sign
+        context._newline
+        path._space
+        git._space
+        welcome_sign._newline._space
     )
   	ZSH_THEME_PROMPT_RIGHT=(
-    	clock
+        clock
 	)
