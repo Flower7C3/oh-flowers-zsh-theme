@@ -1,3 +1,14 @@
+################################################################
+# Utility functions
+################################################################
+
+local _newline=$'\n'
+local _space=$'\ '
+local _null=$''
+local _tab=$'\t'
+local _lineup='%{'$'\e[1A''%}'
+local _linedown='%{'$'\e[1B''%}'
+
 case $(uname) in
     Darwin)
       OS='OSX'

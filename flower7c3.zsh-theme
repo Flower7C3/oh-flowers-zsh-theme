@@ -1,1 +1,1 @@
-src/flower7c3.zsh
+src/main.zsh
