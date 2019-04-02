@@ -18,7 +18,7 @@ function theme_prompt_clock {
 function theme_prompt_context {
   echo -n "%{$fg[green]%}"
   echo -n "$1"
-  echo -n "$(print_icon 'APPLE_ICON') "
+  echo -n "$OS_ICON "
   echo -n "%n@%m"
   echo -n "$2"
   echo -n "%{$reset_color%}"

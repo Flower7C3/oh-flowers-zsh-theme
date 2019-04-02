@@ -27,13 +27,13 @@ else
 fi
 
 source ${flower7c3_directory}/icons.zsh
+source ${flower7c3_directory}/utilities.zsh
 source ${flower7c3_directory}/prompts.zsh
 
 if [ -z "$ZSH_THEME_PROMPT_LEFT" ]; then
   ZSH_THEME_PROMPT_LEFT=(
       exit_code
-      context._newline
-      path._space
+      path._newline
       git._space
       welcome_sign._newline._space
   )
@@ -46,7 +46,8 @@ done
 if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
   ZSH_THEME_PROMPT_RIGHT=(
     lineup
-    clock
+    context
+    clock._space
     linedown
   )
 fi
