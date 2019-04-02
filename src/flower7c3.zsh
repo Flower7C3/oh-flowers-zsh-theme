@@ -1,5 +1,5 @@
 # Clean, simple, compatible and meaningful.
-# Tested on Linux, Unix and Windows under ANSI colors.
+# Tested on OSX ANSI colors.
 # It is recommended to use with a dark background.
 # Colors: black, red, green, yellow, *blue, magenta, cyan, and white.
 #
@@ -27,18 +27,39 @@ else
 fi
 
 source ${flower7c3_directory}/icons.zsh
-source ${flower7c3_directory}/git.zsh
+source ${flower7c3_directory}/prompts.zsh
 
-local _newline=$'\n'
-local _tab=$'\t'
-local _lineup=$'\e[1A'
-local _linedown=$'\e[1B'
+if [ -z "$ZSH_THEME_PROMPT_LEFT" ]; then
+  ZSH_THEME_PROMPT_LEFT=(
+      newline
+      context
+      space
+      path
+      git
+      exit_code
+      newline
+      welcome_sign
+  )
+fi
+if [ -z "$ZSH_THEME_PROMPT_RIGHT" ]; then
+  ZSH_THEME_PROMPT_RIGHT=(
+    clock
+  )
+fi
 
-local clock="%{$fg[white]%}%{$(print_icon 'TIME_ICON')%}%*%{${reset_color}%}"
-local at_context=" %{$fg[green]%}%{$(print_icon 'APPLE_ICON')%} %n@%m%{${reset_color}%}"
-local in_path=" %{$terminfo[bold]$fg[yellow]%}%{$(print_icon 'FOLDER_ICON')%} %~%{${reset_color}%}"
-local git_info='$(git_super_status)' # $(git_prompt_info)
-local exit_code="%(?,, %{$fg[red]%}%{$(print_icon 'FAIL_ICON')%}%?%{${reset_color}%})"
-local prompt_sign="%(#,%{$terminfo[bold]$fg[red]%}#%{${reset_color}%},%{$terminfo[bold]$fg[cyan]%}$%{${reset_color}%}) "
-
-PROMPT="${_newline}${clock}${at_context}${in_path}${git_info}${exit_code}${_newline}${prompt_sign}"
+PROMPT=""
+for command in "${ZSH_THEME_PROMPT_LEFT[@]}"; do
+  # if [[ "$command" == "newline" || "$command" == "space" || "$command" == "lineup" || "$command" == "linedown" || "$command" == "git" ]]; then
+    PROMPT="${PROMPT}$(theme_prompt_special ${command})"
+  # else
+    # PROMPT="${PROMPT}$(theme_prompt_${command})"
+  # fi
+done
+RPROMPT=""
+for command in "${ZSH_THEME_PROMPT_RIGHT[@]}"; do
+  # if [[ "$command" == "newline" || "$command" == "space" || "$command" == "lineup" || "$command" == "linedown" || "$command" == "git" ]]; then
+    RPROMPT="${RPROMPT}$(theme_prompt_special ${command})"
+  # else
+    # RPROMPT="${RPROMPT}$(theme_prompt_${command})"
+  # fi
+done

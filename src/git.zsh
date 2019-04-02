@@ -5,8 +5,6 @@
 # h: equivalent to dirname
 export __GIT_PROMPT_DIR=${0:A:h}
 
-export GIT_PROMPT_EXECUTABLE=${GIT_PROMPT_EXECUTABLE:-"python"}
-
 # Initialize colors.
 autoload -U colors
 colors
@@ -43,13 +41,8 @@ function chpwd_update_git_vars() {
 function update_current_git_vars() {
     unset __CURRENT_GIT_STATUS
 
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "python" ]]; then
-        local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
-        _GIT_STATUS=`python ${gitstatus} 2>/dev/null`
-    fi
-    if [[ "$GIT_PROMPT_EXECUTABLE" == "haskell" ]]; then
-        _GIT_STATUS=`git status --porcelain --branch &> /dev/null | $__GIT_PROMPT_DIR/src/.bin/gitstatus`
-    fi
+    local gitstatus="$__GIT_PROMPT_DIR/gitstatus.py"
+    _GIT_STATUS=`python ${gitstatus} 2>/dev/null`
     __CURRENT_GIT_STATUS=("${(@s: :)_GIT_STATUS}")
     GIT_BRANCH=$__CURRENT_GIT_STATUS[1]
 	GIT_AHEAD=$__CURRENT_GIT_STATUS[2]
@@ -61,7 +54,7 @@ function update_current_git_vars() {
 }
 
 
-git_super_status() {
+theme_prompt_git() {
 	precmd_update_git_vars
 	if [[ -n "$GIT_BRANCH" && "$GIT_BRANCH" != ':' ]]; then
 		local STATUS=""
@@ -113,24 +106,24 @@ git_super_status() {
 			fi
 		fi
 		STATUS="${STATUS}${ZSH_THEME_GIT_CHANGES_PREFIX}${STATUS_CHANGES}${ZSH_THEME_GIT_CHANGES_SUFFIX}"
-		echo "${ZSH_THEME_GIT_PROMPT_PREFIX}${STATUS}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+		echo -n "${ZSH_THEME_GIT_PROMPT_PREFIX}${STATUS}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 	fi
 }
 
 # Default values for the appearance of the prompt. Configure at will.
 ZSH_THEME_GIT_PROMPT_PREFIX=" "
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
-ZSH_THEME_GIT_UPSTREAM_PREFIX="%{${fg[cyan]}(%{${reset_color}%}"
-ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{${fg[cyan]})%{${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_PREFIX="%{${fg[cyan]}[%{${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_SEPARATOR="%{${fg[cyan]}/%{${reset_color}%}"
-ZSH_THEME_GIT_CHANGES_SUFFIX="%{${fg[cyan]}]%{${reset_color}%}"
+ZSH_THEME_GIT_UPSTREAM_PREFIX="%{${fg[cyan]}[${reset_color}%}"
+ZSH_THEME_GIT_UPSTREAM_SUFFIX="%{${fg[cyan]}]${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_PREFIX="%{${fg[cyan]}(%G${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SEPARATOR="%{${fg[cyan]}|%G${reset_color}%}"
+ZSH_THEME_GIT_CHANGES_SUFFIX="%{${fg[cyan]})%G${reset_color}%}"
 ZSH_THEME_GIT_PROMPT_BRANCH="%{${fg_bold[cyan]}$(print_icon 'VCS_BRANCH_ICON')%}"
 ZSH_THEME_GIT_PROMPT_COMMIT="%{${fg_bold[cyan]}$(print_icon 'VCS_COMMIT_ICON')%}"
-ZSH_THEME_GIT_PROMPT_BEHIND="%{${fg[blue]}\u2193%G%}" # ↓
-ZSH_THEME_GIT_PROMPT_AHEAD="%{${fg[blue]}\u2191%G%}" # ↑
-ZSH_THEME_GIT_PROMPT_STAGED="%{${fg[green]}\u25cf%G%}" # ●
-ZSH_THEME_GIT_PROMPT_CONFLICTS="%{${fg[magenta]}\uFE0F%G%}" # ✖
-ZSH_THEME_GIT_PROMPT_CHANGED="%{${fg[red]}\u002B%G%}" # +
+ZSH_THEME_GIT_PROMPT_BEHIND="%{${fg[blue]}\u2B06%G%}" # ⬇
+ZSH_THEME_GIT_PROMPT_AHEAD="%{${fg[blue]}\u2B07%G%}" # ⬆
+ZSH_THEME_GIT_PROMPT_STAGED="%{${fg[green]}\u25CF%G%}" # ●
+ZSH_THEME_GIT_PROMPT_CONFLICTS="%{${fg[magenta]}\u2716%G%}" # ✖
+ZSH_THEME_GIT_PROMPT_CHANGED="%{${fg[red]}\u271A%G%}" # ✚
 ZSH_THEME_GIT_PROMPT_UNTRACKED="%{\u2026%G%}" # …
 ZSH_THEME_GIT_PROMPT_CLEAN="%{${fg_bold[green]}\u2714%G%}" # ✔
