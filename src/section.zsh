@@ -54,9 +54,30 @@ _theme_section_context() {
   echo -n "%{$reset_color%}"
 }
 _theme_section_path() {
+  typeset -AH dir_states
+  dir_states=(
+    "DEFAULT"         "FOLDER_ICON"
+    "HOME"            "HOME_ICON"
+    "HOME_SUBFOLDER"  "HOME_SUB_ICON"
+    "NOT_WRITABLE"    "LOCK_ICON"
+    "ETC"             "ETC_ICON"
+  )
+  local state_path="$(print -P '%~')"
+  local state_icon="FOLDER_ICON"
+  if [[ $state_path == '/etc'* ]]; then
+    state_icon='FOLDER_ETC_ICON'
+  elif [[ $state_path == '/root'* || $state_path == '/var/root'* ]]; then
+    state_icon='FOLDER_ROOT_ICON'
+  elif [[ $state_path == *'/.git'* ]]; then
+    state_icon='FOLDER_GIT_ICON'
+  elif [[ $state_path == *'/node_modules'* ]]; then
+    state_icon='FOLDER_NPM_ICON'
+  elif [[ $state_path == '~'* ]]; then
+    state_icon="FOLDER_HOME_ICON"
+  fi
   echo -n "%{$terminfo[bold]$fg[yellow]%}"
   echo -n "$1"
-  echo -n "$(print_icon 'FOLDER_ICON') "
+  echo -n "$(print_icon $state_icon) "
   echo -n "%~"
   echo -n "$2"
   echo -n "%{$reset_color%}"

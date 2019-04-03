@@ -47,11 +47,12 @@ typeset -gAH icons
         LINUX_ICON                     $'\uF17C'
         SUNOS_ICON                     $'\uF185 '
         # directory
-        HOME_ICON                      $'\uF015'
-        HOME_SUB_ICON                  $'\uF07C'
-        FOLDER_ICON                    $'\uF115'
-        ETC_ICON                       $'\uF013'
-        NETWORK_ICON                   $'\uF1EB'
+        FOLDER_ICON                    $'\uF114'
+        FOLDER_HOME_ICON               $'\uF015'
+        FOLDER_ETC_ICON                $'\uE615'
+        FOLDER_GIT_ICON                $'\uF1D3'
+        FOLDER_NPM_ICON                $'\uE71E'
+        FOLDER_ROOT_ICON               $'\uF2DD'
         # vcs
         VCS_GIT_ICON                   $'\uF1D3 '
         VCS_INCOMING_CHANGES_ICON      $'\uF01A '
