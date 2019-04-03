@@ -49,6 +49,10 @@ Just add in your `~/.zshrc` variable `ZSH_THEME_FLOWER7C3_PROMPT_LEFT` or `ZSH_T
         linedown
     )
 
+# Preview
+
+<img src="https://github.com/Flower7C3/oh-flowers-zsh-theme/raw/master/screenshot.png" width=600/>
+
 
 # Credits
 
