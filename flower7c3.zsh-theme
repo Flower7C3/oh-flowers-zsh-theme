@@ -29,7 +29,7 @@ else
   fi
 fi
 
-alias upgrade_oh_flowers_zsh_theme="(cd ${flower7c3_theme_directory} && sudo git pull)"
+alias upgrade_oh_flowers_zsh_theme="(cd ${flower7c3_theme_directory} && git pull)"
 
 ################################################################
 # load resources
