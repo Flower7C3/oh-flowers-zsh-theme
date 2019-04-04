@@ -49,9 +49,18 @@ Just add in your `~/.zshrc` variable `ZSH_THEME_FLOWER7C3_PROMPT_LEFT` or `ZSH_T
         linedown
     )
 
+
+
+# Update
+
+To update installed theme just run `upgrade_oh_flowers_zsh_theme` command.
+
+
+
 # Preview
 
 <img src="https://github.com/Flower7C3/oh-flowers-zsh-theme/raw/master/screenshot.png" width=600/>
+
 
 
 # Credits
