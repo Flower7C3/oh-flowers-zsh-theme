@@ -20,6 +20,8 @@ _theme_section() {
     echo -n '$_linedown'
   elif [[ "$section_name" == "clock" ]]; then
     echo -n '$(_theme_section_clock '$section_prefix' '$section_suffix')'
+  elif [[ "$section_name" == "calendar" ]]; then
+    echo -n '$(_theme_section_calendar '$section_prefix' '$section_suffix')'
   elif [[ "$section_name" == "context" ]]; then
     echo -n '$(_theme_section_context '$section_prefix' '$section_suffix')'
   elif [[ "$section_name" == "path" ]]; then
@@ -41,7 +43,16 @@ _theme_section_clock() {
   echo -n "%{$fg[white]%}"
   echo -n "$1"
   echo -n "$(print_icon 'TIME_ICON')"
-  echo -n "%*"
+  echo -n "%D{$ZSH_THEME_FLOWER7C3_TIME_FORMAT}"
+  echo -n "$2"
+  echo -n "%{$reset_color%}"
+}
+
+_theme_section_calendar() {
+  echo -n "%{$fg[white]%}"
+  echo -n "$1"
+  echo -n "$(print_icon 'DATE_ICON')"
+  echo -n "%D{$ZSH_THEME_FLOWER7C3_DATE_FORMAT}"
   echo -n "$2"
   echo -n "%{$reset_color%}"
 }

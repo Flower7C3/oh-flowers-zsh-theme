@@ -71,7 +71,14 @@ typeset -gAH icons
 # Prints the named icon, or if that icon is undefined, the string name.
 function print_icon() {
   local icon_name=$1
-  printf "${icons[$icon_name]}"
+  local icon_value=${icon_name/_ICON/ }
+  if [[ -v ZSH_THEME_FLOWER7C3_${icon_name} ]]; then
+    local ICON_USER_VARIABLE=ZSH_THEME_FLOWER7C3_${icon_name}
+    icon_value="${(P)ICON_USER_VARIABLE}"
+  elif [ ! -z "${icons[$icon_name]}" ]; then
+    icon_value="${icons[$icon_name]}"
+  fi
+  printf "$icon_value"
 }
 
 # Get a list of configured icons
