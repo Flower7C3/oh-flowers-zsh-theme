@@ -42,7 +42,7 @@ _theme_section() {
 _theme_section_clock() {
   echo -n "%{$fg[white]%}"
   echo -n "$1"
-  echo -n "$(print_icon 'TIME_ICON')"
+  echo -n "$(print_icon 'TIME_ICON') "
   echo -n "%D{$ZSH_THEME_FLOWER7C3_TIME_FORMAT}"
   echo -n "$2"
   echo -n "%{$reset_color%}"
@@ -51,7 +51,7 @@ _theme_section_clock() {
 _theme_section_calendar() {
   echo -n "%{$fg[white]%}"
   echo -n "$1"
-  echo -n "$(print_icon 'DATE_ICON')"
+  echo -n "$(print_icon 'DATE_ICON') "
   echo -n "%D{$ZSH_THEME_FLOWER7C3_DATE_FORMAT}"
   echo -n "$2"
   echo -n "%{$reset_color%}"
