@@ -33,10 +33,11 @@ To update installed theme just run `upgrade_oh_flowers_zsh_theme` command.
 
 ## Prompt segments
 
-Configure segments in your `~/.zshrc` with `ZSH_THEME_FLOWER7C3_PROMPT_LEFT` and `ZSH_THEME_FLOWER7C3_PROMPT_RIGHT` variables.
+Configure visible segments in your `~/.zshrc` by using following variables:
+* `ZSH_THEME_FLOWER7C3_PROMPT_LEFT`
+* `ZSH_THEME_FLOWER7C3_PROMPT_RIGHT`
 
 You can use with following segments in prompt line:
-
 * **welcome_sign** - displays sign *$* or *#* (if logged as root) 
 * **context** - OS icon and user at host
 * **path** - current directory icon (default, etc, root, git, node_modules, home) and directory path
@@ -50,7 +51,6 @@ You can use with following segments in prompt line:
 * **linedown** - useful after moving cursor up
 
 Each segment may have prefix and suffix (by default it is null). To add prefix and suffix just add them after dot in segment name:
-
 * **_newline**
 * **_space**
 * **_null**
@@ -59,22 +59,36 @@ Each segment may have prefix and suffix (by default it is null). To add prefix a
 
 ## Date and time format
 
-Configure format in your `~/.zshrc` with `ZSH_THEME_FLOWER7C3_DATE_FORMAT` and `ZSH_THEME_FLOWER7C3_TIME_FORMAT` variables.
-Value is formatted using the `strftime` function. See man page strftime(3) for more details.
+Configure format in your `~/.zshrc` by using following variables:
+* `ZSH_THEME_FLOWER7C3_DATE_FORMAT`
+* `ZSH_THEME_FLOWER7C3_TIME_FORMAT`
+
+Variables take values from the `strftime` function. See man page strftime(3) for more details.
+
+
+## GIT info
+
+With **git** section You can see changes in GIT repository wrapped with parenthesis and separator.
+
+Configure custom parenthesis and separator in your `~/.zshrc` by using following variables:
+* `ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_PREFIX`
+* `ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_SUFFIX`
+* `ZSH_THEME_FLOWER7C3_GIT_CHANGES_PREFIX`
+* `ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR`
+* `ZSH_THEME_FLOWER7C3_GIT_CHANGES_SUFFIX`
+
 
 
 ## Icons
 
 Configure custom icons in your `~/.zshrc`. Search given code with [Nerd-Fonts cheat-sheet](http://nerdfonts.com/#cheat-sheet) and specify valid variable.
-Eg. `ZSH_THEME_FLOWER7C3_DOLLAR_SIGN='£'`. See all availible icons with `get_icon_names` command.
- 
+Eg. `ZSH_THEME_FLOWER7C3_DOLLAR_SIGN='£'`.
+
+See all availible icons with `get_icon_names` command.
+
 
 
 ## Default configuration
-
-    ZSH_THEME_FLOWER7C3_DATE_FORMAT="%d.%m.%y"
-    
-    ZSH_THEME_FLOWER7C3_TIME_FORMAT="%K:%M:%S"
 
     ZSH_THEME_FLOWER7C3_PROMPT_LEFT=(
         exit_code
@@ -89,6 +103,15 @@ Eg. `ZSH_THEME_FLOWER7C3_DOLLAR_SIGN='£'`. See all availible icons with `get_ic
         clock._space
         linedown
     )
+    
+    ZSH_THEME_FLOWER7C3_DATE_FORMAT='%d.%m.%y'
+    ZSH_THEME_FLOWER7C3_TIME_FORMAT='%K:%M:%S'
+
+    ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_PREFIX='['
+    ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_SUFFIX=']'
+    ZSH_THEME_FLOWER7C3_GIT_CHANGES_PREFIX='('
+    ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR='|'
+    ZSH_THEME_FLOWER7C3_GIT_CHANGES_SUFFIX=')'
 
 
 
