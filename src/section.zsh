@@ -59,7 +59,7 @@ _theme_section_calendar() {
 _theme_section_context() {
   echo -n "%{$fg[green]%}"
   echo -n "$1"
-  echo -n "$OS_ICON "
+  echo -n "$(print_icon 'OS_ICON') "
   echo -n "%n@%m"
   echo -n "$2"
   echo -n "%{$reset_color%}"

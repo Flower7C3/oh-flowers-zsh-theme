@@ -113,3 +113,8 @@ case $(uname) in
       OS_ICON=''
       ;;
 esac
+
+if [ -z "$ZSH_THEME_FLOWER7C3_OS_ICON" ]; then
+    ZSH_THEME_FLOWER7C3_OS_ICON=$OS_ICON
+fi
+
