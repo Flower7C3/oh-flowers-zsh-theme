@@ -6,9 +6,7 @@ _theme_section() {
   local section_name=${section_params[1]}
   local section_prefix=\${${section_params[2]:-'_null'}}
   local section_suffix=\${${section_params[3]:-'_null'}}
-  if [[ "$section_name" == "none" ]]; then
-    # none
-  elif [[ "$section_name" == "newline" ]]; then
+  if [[ "$section_name" == "newline" ]]; then
     echo -n '$_newline'
   elif [[ "$section_name" == "tab" ]]; then
     echo -n '$_tab'
@@ -18,24 +16,15 @@ _theme_section() {
     echo -n '$_lineup'
   elif [[ "$section_name" == "linedown" ]]; then
     echo -n '$_linedown'
-  elif [[ "$section_name" == "clock" ]]; then
-    echo -n '$(_theme_section_clock '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "calendar" ]]; then
-    echo -n '$(_theme_section_calendar '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "context" ]]; then
-    echo -n '$(_theme_section_context '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "path" ]]; then
-    echo -n '$(_theme_section_path '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "welcome_sign" ]]; then
-    echo -n '$(_theme_section_welcome_sign '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "git" ]]; then
-    echo -n '$(_theme_section_git '$section_prefix' '$section_suffix')'
-  elif [[ "$section_name" == "exit_code" ]]; then
-    echo -n '$(_theme_section_exit_code '$section_prefix' '$section_suffix')'
   else
-    echo -n $section_prefix
-    echo -n $section_name
-    echo -n $section_suffix
+    section_function=_theme_section_${section_name}
+    if type "$section_function" 2>/dev/null | grep -q 'function'; then
+      echo -n '$('$section_function' '$section_prefix' '$section_suffix')'
+    else
+      echo -n $section_prefix
+      echo -n $section_name
+      echo -n $section_suffix
+    fi
   fi
 }
 

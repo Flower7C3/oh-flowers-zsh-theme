@@ -12,10 +12,12 @@ You then need to select this theme in your `~/.zshrc`:
 
     ZSH_THEME="flower7c3/flower7c3"
 
+
 ## Install Nerd-Fonts
    
 The [Nerd-Fonts](https://github.com/ryanoasis/nerd-fonts) project is an effort to create fonts truly tricked out with as many glyphs as possible.
 After installing `nerd-fonts` configure your terminal emulator to use one.
+
 
 ## Update theme
 
@@ -44,6 +46,7 @@ You can use with following segments in prompt line:
 * **git** - nice git status: icon, branch name (or commit hash) and changes (ahead, behind, staged, conflicts, changed, untracked, clean)
 * **clock** - clock icon and time in given format
 * **calendar** - calendar icon and date in given format
+* **battery** - battery status icon and value
 * **exit_code** - last command exit code
 * **newline** - just newline character
 * **space** - just space character
@@ -78,6 +81,12 @@ Configure custom parenthesis and separator in your `~/.zshrc` by using following
 * `ZSH_THEME_FLOWER7C3_GIT_CHANGES_SUFFIX`
 
 
+## Battery status
+
+Configure format in your `~/.zshrc` by using following variables:
+* `ZSH_THEME_FLOWER7C3_BATTERY_VERBOSE`
+* `ZSH_THEME_FLOWER7C3_BATTERY_LOW_THRESHOLD`
+
 
 ## Icons
 
@@ -85,7 +94,6 @@ Configure custom icons in your `~/.zshrc`. Search given code with [Nerd-Fonts ch
 Eg. `ZSH_THEME_FLOWER7C3_DOLLAR_SIGN='£'`.
 
 See all availible icons with `get_icon_names` command.
-
 
 
 ## Default configuration
@@ -112,6 +120,9 @@ See all availible icons with `get_icon_names` command.
     ZSH_THEME_FLOWER7C3_GIT_CHANGES_PREFIX='('
     ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR='|'
     ZSH_THEME_FLOWER7C3_GIT_CHANGES_SUFFIX=')'
+
+    ZSH_THEME_FLOWER7C3_BATTERY_VERBOSE='true'
+    ZSH_THEME_FLOWER7C3_BATTERY_LOW_THRESHOLD=10
 
 
 

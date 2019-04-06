@@ -39,4 +39,5 @@ source ${flower7c3_theme_directory}/src/icons.zsh
 source ${flower7c3_theme_directory}/src/utilities.zsh
 source ${flower7c3_theme_directory}/src/section.zsh
 source ${flower7c3_theme_directory}/src/section_git.zsh
+source ${flower7c3_theme_directory}/src/section_battery.zsh
 source ${flower7c3_theme_directory}/src/main.zsh
