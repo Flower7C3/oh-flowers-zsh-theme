@@ -79,16 +79,16 @@ typeset -gAH icons
         BATTERY_OUTLINE_ICON           $'\uF58D'
         BATTERY_ALERT_ICON             $'\uF582'
         BATTERY_CHARGING_ICON          $'\uF583'
-        BATTERY_CHARGING_10_ICON       $'\uf585'
-        BATTERY_CHARGING_20_ICON       $'\uf585'
-        BATTERY_CHARGING_30_ICON       $'\uf586'
-        BATTERY_CHARGING_40_ICON       $'\uf587'
-        BATTERY_CHARGING_50_ICON       $'\uf587'
-        BATTERY_CHARGING_60_ICON       $'\uf588'
-        BATTERY_CHARGING_70_ICON       $'\uf588'
-        BATTERY_CHARGING_80_ICON       $'\uf589'
-        BATTERY_CHARGING_90_ICON       $'\uf58a'
-        BATTERY_CHARGING_100_ICON      $'\uf584'
+        BATTERY_CHARGING_10_ICON       $'\uF585'$_space
+        BATTERY_CHARGING_20_ICON       $'\uF585'$_space
+        BATTERY_CHARGING_30_ICON       $'\uF586'$_space
+        BATTERY_CHARGING_40_ICON       $'\uF587'$_space
+        BATTERY_CHARGING_50_ICON       $'\uF587'$_space
+        BATTERY_CHARGING_60_ICON       $'\uF588'$_space
+        BATTERY_CHARGING_70_ICON       $'\uF588'$_space
+        BATTERY_CHARGING_80_ICON       $'\uF589'$_space
+        BATTERY_CHARGING_90_ICON       $'\uF58A'$_space
+        BATTERY_CHARGING_100_ICON      $'\uF584'$_space
     )
 }
 

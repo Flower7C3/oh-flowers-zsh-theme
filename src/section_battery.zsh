@@ -73,23 +73,23 @@ _theme_section_battery() {
     if [[ "$bat_percent" -ge 100 ]]; then
       icon=$(print_icon 'BATTERY_CHARGING_ICON')
     elif [[ "$bat_percent" -ge 90 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_90_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_90_ICON')
     elif [[ "$bat_percent" -ge 80 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_80_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_80_ICON')
     elif [[ "$bat_percent" -ge 70 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_70_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_70_ICON')
     elif [[ "$bat_percent" -ge 60 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_60_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_60_ICON')
     elif [[ "$bat_percent" -ge 50 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_50_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_50_ICON')
     elif [[ "$bat_percent" -ge 40 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_40_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_40_ICON')
     elif [[ "$bat_percent" -ge 30 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_30_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_30_ICON')
     elif [[ "$bat_percent" -ge 20 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_20_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_20_ICON')
     elif [[ "$bat_percent" -ge 10 ]]; then
-      icon=$(print_icon 'BATTERY_CHARGING_10_ICON')$_space
+      icon=$(print_icon 'BATTERY_CHARGING_10_ICON')
     else
       icon=$(print_icon 'BATTERY_CHARGING_ICON')
     fi
