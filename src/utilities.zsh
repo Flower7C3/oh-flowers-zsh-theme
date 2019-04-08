@@ -3,7 +3,7 @@
 ################################################################
 
 local _newline=$'\n'
-local _space=$'\ '
+local _space=$'\u0020'
 local _null=$''
 local _tab=$'\t'
 local _lineup='%{'$'\e[1A''%}'

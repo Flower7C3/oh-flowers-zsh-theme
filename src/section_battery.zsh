@@ -15,7 +15,7 @@ _theme_section_battery() {
     # Time remaining on battery operation (charging/discharging)
     local tstring=$(echo $raw_data | awk -F ';' '{print $3}' | awk '{print $1}')
     # If time has not been calculated by system yet
-    [[ $tstring =~ '(\(no|not)' ]] && tstring="..."
+    [[ $tstring =~ '(\(no|not)' ]] && tstring="\u2026"
 
     # percent of battery charged
     typeset -i 10 bat_percent
@@ -30,7 +30,7 @@ _theme_section_battery() {
         remain=" ($tstring)"
         ;;
       'discharging')
-        [[ $bat_percent -lt $ZSH_THEME_FLOWER7C3_BATTERY_LOW_THRESHOLD ]] && current_state="low" || current_state="disconnected"
+        current_state="disconnected"
         remain=" ($tstring)"
         ;;
       *)
@@ -50,7 +50,7 @@ _theme_section_battery() {
     [[ $capacity -gt 100 ]] && local bat_percent=100 || local bat_percent=$capacity
     [[ $battery_status =~ Charging || $battery_status =~ Full ]] && local connected=true
     if [[ -z  $connected ]]; then
-      [[ $bat_percent -lt $ZSH_THEME_FLOWER7C3_BATTERY_LOW_THRESHOLD ]] && current_state="low" || current_state="disconnected"
+      current_state="disconnected"
     else
       [[ $bat_percent =~ 100 ]] && current_state="charged"
       [[ $bat_percent -lt 100 ]] && current_state="charging"
@@ -58,7 +58,7 @@ _theme_section_battery() {
     if [[ -f /usr/bin/acpi ]]; then
       local time_remaining=$(acpi | awk '{ print $5 }')
       if [[ $time_remaining =~ rate ]]; then
-        local tstring="..."
+        local tstring="\u2026"
       elif [[ $time_remaining =~ "[[:digit:]]+" ]]; then
         local tstring=${(f)$(date -u -d "$(echo $time_remaining)" +%k:%M 2> /dev/null)}
       fi
@@ -68,37 +68,62 @@ _theme_section_battery() {
     return ''
   fi
 
-  if [[ "$current_state" == "low" ]]; then
-    color='red'
-    icon='BATTERY_ALERT_ICON'
-  elif [[ "$current_state" == "charging" ]]; then
-    color='yellow'
-    icon='BATTERY_CHARGING_ICON'
+  if [[ "$current_state" == "charging" ]]; then
+    color='blue'
+    if [[ "$bat_percent" -ge 100 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_ICON')
+    elif [[ "$bat_percent" -ge 90 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_90_ICON')$_space
+    elif [[ "$bat_percent" -ge 80 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_80_ICON')$_space
+    elif [[ "$bat_percent" -ge 70 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_70_ICON')$_space
+    elif [[ "$bat_percent" -ge 60 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_60_ICON')$_space
+    elif [[ "$bat_percent" -ge 50 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_50_ICON')$_space
+    elif [[ "$bat_percent" -ge 40 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_40_ICON')$_space
+    elif [[ "$bat_percent" -ge 30 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_30_ICON')$_space
+    elif [[ "$bat_percent" -ge 20 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_20_ICON')$_space
+    elif [[ "$bat_percent" -ge 10 ]]; then
+      icon=$(print_icon 'BATTERY_CHARGING_10_ICON')$_space
+    else
+      icon=$(print_icon 'BATTERY_CHARGING_ICON')
+    fi
   elif [[ "$current_state" == "charged" ]]; then
     color='green'
-    icon='BATTERY_ICON'
+    icon=$(print_icon 'BATTERY_CHARGING_ICON')
   else
-    color='blue'
-    if [[ "$bat_percent" > 90 ]]; then
-      icon='BATTERY_90_ICON'
-    elif [[ "$bat_percent" > 80 ]]; then
-      icon='BATTERY_80_ICON'
-    elif [[ "$bat_percent" > 70 ]]; then
-      icon='BATTERY_70_ICON'
-    elif [[ "$bat_percent" > 60 ]]; then
-      icon='BATTERY_60_ICON'
-    elif [[ "$bat_percent" > 50 ]]; then
-      icon='BATTERY_50_ICON'
-    elif [[ "$bat_percent" > 40 ]]; then
-      icon='BATTERY_40_ICON'
-    elif [[ "$bat_percent" > 30 ]]; then
-      icon='BATTERY_30_ICON'
-    elif [[ "$bat_percent" > 20 ]]; then
-      icon='BATTERY_20_ICON'
-    elif [[ "$bat_percent" > 10 ]]; then
-      icon='BATTERY_10_ICON'
+    color='white'
+    if [[ "$bat_percent" -ge 100 ]]; then
+      icon=$(print_icon 'BATTERY_ICON')
+    elif [[ "$bat_percent" -ge 90 ]]; then
+      icon=$(print_icon 'BATTERY_90_ICON')
+    elif [[ "$bat_percent" -ge 80 ]]; then
+      icon=$(print_icon 'BATTERY_80_ICON')
+    elif [[ "$bat_percent" -ge 70 ]]; then
+      icon=$(print_icon 'BATTERY_70_ICON')
+    elif [[ "$bat_percent" -ge 60 ]]; then
+      icon=$(print_icon 'BATTERY_60_ICON')
+    elif [[ "$bat_percent" -ge 50 ]]; then
+      icon=$(print_icon 'BATTERY_50_ICON')
+    elif [[ "$bat_percent" -ge 40 ]]; then
+      icon=$(print_icon 'BATTERY_40_ICON')
+    elif [[ "$bat_percent" -ge 30 ]]; then
+      icon=$(print_icon 'BATTERY_30_ICON')
+    elif [[ "$bat_percent" -ge 20 ]]; then
+      icon=$(print_icon 'BATTERY_20_ICON')
+    elif [[ "$bat_percent" -ge 10 ]]; then
+      icon=$(print_icon 'BATTERY_10_ICON')
     else
-      icon='BATTERY_ICON'
+      icon=$(print_icon 'BATTERY_OUTLINE_ICON')
+    fi
+    if [[ "$bat_percent" -lt "$ZSH_THEME_FLOWER7C3_BATTERY_LOW_THRESHOLD" ]]; then
+      icon=$(print_icon 'BATTERY_ALERT_ICON')
+      color='red'
     fi
   fi
 
@@ -111,7 +136,7 @@ _theme_section_battery() {
 
   echo -n "%{$fg[$color]%}"
   echo -n "$1"
-  echo -n "$(print_icon $icon)"
+  echo -n "$icon"
   echo -n "$message"
   echo -n "$2"
   echo -n "%{$reset_color%}"

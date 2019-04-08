@@ -13,7 +13,7 @@ typeset -gAH icons
     local LC_ALL="" LC_CTYPE="en_US.UTF-8"
     icons=(
         # general
-        CARRIAGE_RETURN_ICON           $'\u21B5'$'\u0020'
+        CARRIAGE_RETURN_ICON           $'\u21B5'$_space
         DOLLAR_ICON                    $'\uF155'
         ROOT_ICON                      $'\uE614'
         SUDO_ICON                      $'\uF09C'
@@ -28,31 +28,31 @@ typeset -gAH icons
         FREEBSD_ICON                   $'\uF30C'
         ANDROID_ICON                   $'\uF17B'
         LINUX_ARCH_ICON                $'\uF303'
-        LINUX_CENTOS_ICON              $'\uF304'$'\u0020'
+        LINUX_CENTOS_ICON              $'\uF304'$_space
         LINUX_COREOS_ICON              $'\uF305'
         LINUX_DEBIAN_ICON              $'\uF306'
-        LINUX_ELEMENTARY_ICON          $'\uF309'$'\u0020'
-        LINUX_FEDORA_ICON              $'\uF30A'$'\u0020'
-        LINUX_GENTOO_ICON              $'\uF30D'$'\u0020'
+        LINUX_ELEMENTARY_ICON          $'\uF309'$_space
+        LINUX_FEDORA_ICON              $'\uF30A'$_space
+        LINUX_GENTOO_ICON              $'\uF30D'$_space
         LINUX_MAGEIA_ICON              $'\uF310'
-        LINUX_MINT_ICON                $'\uF30E'$'\u0020'
-        LINUX_NIXOS_ICON               $'\uF313'$'\u0020'
-        LINUX_MANJARO_ICON             $'\uF312'$'\u0020'
+        LINUX_MINT_ICON                $'\uF30E'$_space
+        LINUX_NIXOS_ICON               $'\uF313'$_space
+        LINUX_MANJARO_ICON             $'\uF312'$_space
         LINUX_DEVUAN_ICON              $'\uF307'
-        LINUX_ALPINE_ICON              $'\uF300'$'\u0020'
-        LINUX_AOSC_ICON                $'\uF301'$'\u0020'
-        LINUX_OPENSUSE_ICON            $'\uF314'$'\u0020'
-        LINUX_SABAYON_ICON             $'\uF317'$'\u0020'
-        LINUX_SLACKWARE_ICON           $'\uF319'$'\u0020'
+        LINUX_ALPINE_ICON              $'\uF300'$_space
+        LINUX_AOSC_ICON                $'\uF301'$_space
+        LINUX_OPENSUSE_ICON            $'\uF314'$_space
+        LINUX_SABAYON_ICON             $'\uF317'$_space
+        LINUX_SLACKWARE_ICON           $'\uF319'$_space
         LINUX_UBUNTU_ICON              $'\uF31B'
         LINUX_ICON                     $'\uF17C'
-        SUNOS_ICON                     $'\uF185'$'\u0020'
+        SUNOS_ICON                     $'\uF185'$_space
         # directory
         FOLDER_ICON                    $'\uF755'
         FOLDER_HOME_ICON               $'\uF7DB'
         FOLDER_ETC_ICON                $'\uF992'
         FOLDER_GIT_ICON                $'\uF7A1'
-        FOLDER_NPM_ICON                $'\uF898'$'\u0020'
+        FOLDER_NPM_ICON                $'\uF898'$_space
         FOLDER_ROOT_ICON               $'\uF2DD'
         # vcs
         VCS_GIT_ICON                   $'\uF7A1'
@@ -76,8 +76,19 @@ typeset -gAH icons
         BATTERY_30_ICON                $'\uF57B'
         BATTERY_20_ICON                $'\uF57A'
         BATTERY_10_ICON                $'\uF579'
+        BATTERY_OUTLINE_ICON           $'\uF58D'
         BATTERY_ALERT_ICON             $'\uF582'
         BATTERY_CHARGING_ICON          $'\uF583'
+        BATTERY_CHARGING_10_ICON       $'\uf585'
+        BATTERY_CHARGING_20_ICON       $'\uf585'
+        BATTERY_CHARGING_30_ICON       $'\uf586'
+        BATTERY_CHARGING_40_ICON       $'\uf587'
+        BATTERY_CHARGING_50_ICON       $'\uf587'
+        BATTERY_CHARGING_60_ICON       $'\uf588'
+        BATTERY_CHARGING_70_ICON       $'\uf588'
+        BATTERY_CHARGING_80_ICON       $'\uf589'
+        BATTERY_CHARGING_90_ICON       $'\uf58a'
+        BATTERY_CHARGING_100_ICON      $'\uf584'
     )
 }
 
