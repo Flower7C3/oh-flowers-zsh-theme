@@ -64,18 +64,18 @@ _theme_section_git() {
 
 
 		if [[ "$GIT_BRANCH" == :* ]]; then
-			STATUS="${STATUS}%{$fg_bold[cyan]%}$(print_icon 'VCS_COMMIT_ICON') ${GIT_BRANCH/:/}%{${reset_color}%}"
+			STATUS="${STATUS}%{$fg_bold[cyan]%}$(print_icon 'VCS_COMMIT_ICON')${GIT_BRANCH/:/}%{${reset_color}%}"
 		else
-			STATUS="${STATUS}%{$fg_bold[cyan]%}$(print_icon 'VCS_BRANCH_ICON') ${GIT_BRANCH}%{${reset_color}%}"
+			STATUS="${STATUS}%{$fg_bold[cyan]%}$(print_icon 'VCS_BRANCH_ICON')${GIT_BRANCH}%{${reset_color}%}"
 		fi
 
 		if [[ "$GIT_BEHIND" -ne "0" || "$GIT_AHEAD" -ne "0" ]]; then
 			STATUS="${STATUS}%{$fg[cyan]%}${ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_PREFIX}%{${reset_color}%}"
             if [[ "$GIT_BEHIND" -ne "0" ]]; then
-                STATUS="${STATUS}%{$fg[blue]%}$(print_icon 'VCS_INCOMING_CHANGES_ICON') ${GIT_BEHIND}%{${reset_color}%}"
+                STATUS="${STATUS}%{$fg[blue]%}$(print_icon 'VCS_INCOMING_CHANGES_ICON')${GIT_BEHIND}%{${reset_color}%}"
             fi
             if [[ "$GIT_AHEAD" -ne "0" ]]; then
-                STATUS="${STATUS}%{$fg[blue]%}$(print_icon 'VCS_OUTGOING_CHANGES_ICON') ${GIT_AHEAD}%{${reset_color}%}"
+                STATUS="${STATUS}%{$fg[blue]%}$(print_icon 'VCS_OUTGOING_CHANGES_ICON')${GIT_AHEAD}%{${reset_color}%}"
             fi
 			STATUS="${STATUS}%{$fg[cyan]%}${ZSH_THEME_FLOWER7C3_GIT_UPSTREAM_SUFFIX}%{${reset_color}%}"
 		fi
@@ -88,7 +88,7 @@ _theme_section_git() {
 				if [[ -n "$STATUS_CHANGES" ]]; then
 					STATUS_CHANGES="${STATUS_CHANGES}%{$fg[cyan]%}${ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR}%G%{${reset_color}%}"
 				fi
-				STATUS_CHANGES="${STATUS_CHANGES}%{$fg[green]%}$(print_icon 'VCS_STAGED_ICON') ${GIT_STAGED}%{${reset_color}%}"
+				STATUS_CHANGES="${STATUS_CHANGES}%{$fg[green]%}$(print_icon 'VCS_STAGED_ICON')${GIT_STAGED}%{${reset_color}%}"
 			fi
 			if [ "$GIT_CONFLICTS" -ne "0" ]; then
 				if [[ -n "$STATUS_CHANGES" ]]; then
@@ -100,13 +100,13 @@ _theme_section_git() {
 				if [[ -n "$STATUS_CHANGES" ]]; then
 					STATUS_CHANGES="${STATUS_CHANGES}%{$fg[cyan]%}${ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR}%G%{${reset_color}%}"
 				fi
-				STATUS_CHANGES="${STATUS_CHANGES}%{$fg[red]%}$(print_icon 'VCS_UNSTAGED_ICON') ${GIT_CHANGED}%{${reset_color}%}"
+				STATUS_CHANGES="${STATUS_CHANGES}%{$fg[red]%}$(print_icon 'VCS_UNSTAGED_ICON')${GIT_CHANGED}%{${reset_color}%}"
 			fi
 			if [ "$GIT_UNTRACKED" -ne "0" ]; then
 				if [[ -n "$STATUS_CHANGES" ]]; then
 					STATUS_CHANGES="${STATUS_CHANGES}%{$fg[cyan]%}${ZSH_THEME_FLOWER7C3_GIT_CHANGES_SEPARATOR}%G%{${reset_color}%}"
 				fi
-				STATUS_CHANGES="${STATUS_CHANGES}$(print_icon 'VCS_UNTRACKED_ICON') ${GIT_UNTRACKED}%{${reset_color}%}"
+				STATUS_CHANGES="${STATUS_CHANGES}$(print_icon 'VCS_UNTRACKED_ICON')${GIT_UNTRACKED}%{${reset_color}%}"
 			fi
 		fi
 		if [[ -n "$STATUS_CHANGES" ]]; then
