@@ -50,7 +50,7 @@ You can use with following segments in prompt line:
 * **exit_code** - last command exit code
 * **newline** - just newline character
 * **space** - just space character
-* **lineup** - useful when You use multilne left prompt and want to move cursor up in right prompt
+* **lineup** - useful when You use multiline left prompt and want to move cursor up in right prompt
 * **linedown** - useful after moving cursor up
 
 Each segment may have prefix and suffix (by default it is null). To add prefix and suffix just add them after dot in segment name:
@@ -93,7 +93,7 @@ Configure format in your `~/.zshrc` by using following variables:
 Configure custom icons in your `~/.zshrc`. Search given code with [Nerd-Fonts cheat-sheet](http://nerdfonts.com/#cheat-sheet) and specify valid variable.
 Eg. `ZSH_THEME_FLOWER7C3_DOLLAR_SIGN='£'`.
 
-See all availible icons with `get_icon_names` command.
+See all available icons with `get_icon_names` command.
 
 
 ## Default configuration
