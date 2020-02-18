@@ -70,8 +70,12 @@ _theme_section_path() {
     state_icon='FOLDER_ROOT_ICON'
   elif [[ $state_path == *'/.git'* ]]; then
     state_icon='FOLDER_GIT_ICON'
+  elif [[ $state_path == *'/.docksal'* ]]; then
+    state_icon='FOLDER_DOCKER_ICON'
   elif [[ $state_path == *'/node_modules'* ]]; then
     state_icon='FOLDER_NPM_ICON'
+  elif [[ $state_path == *'/www'* ]]; then
+    state_icon='FOLDER_WWW_ICON'
   elif [[ $state_path == '~'* ]]; then
     state_icon="FOLDER_HOME_ICON"
   fi

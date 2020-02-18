@@ -54,6 +54,9 @@ typeset -gAH icons
         FOLDER_GIT_ICON                $'\uF7A1'$'\u0020'
         FOLDER_NPM_ICON                $'\uF898'$'\u0020'
         FOLDER_ROOT_ICON               $'\uF2DD'$'\u0020'
+        FOLDER_DOCKER_ICON             $'\uF308'$'\u0020'
+        FOLDER_WWW_ICON                $'\uFA9E'
+        FOLDER_GOOGLE_DRIVE_ICON       $'\uF74D'
         # vcs
         VCS_GIT_ICON                   $'\uF7A1'$'\u0020'
         VCS_INCOMING_CHANGES_ICON      $'\uF01A'$'\u0020'
